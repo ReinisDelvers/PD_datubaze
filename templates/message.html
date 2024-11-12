@@ -1,0 +1,31 @@
+{% extends 'registration.html'%}
+
+{% block nosaukums %} Messages {% endblock %}
+
+{% block saturs %}
+<form method="post">
+  <select id="user_id" name="user_id">
+    {% for one in user %}
+      <option value="{{one[0]}}">{{one[3]}}</option>
+    {% endfor %}    
+  </select>
+  <textarea id="text" name="text" rows="4" cols="50">
+    Write text here
+  </textarea>
+  <input type="submit" value="Add message">
+  <table class="table">
+      <tr>
+        <th>User</th>
+        <th>Message</th>
+      </tr>
+      {% for one in user %}
+        {% for two in message %}    
+          <tr>
+            <td>{{one[1]}} {{one[2]}}</td>
+            <td>{{two[1]}}</td>
+          </tr>
+        {% endfor %}
+      {% endfor %}
+  </table>
+</form>    
+{% endblock %}
