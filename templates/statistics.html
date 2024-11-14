@@ -1,0 +1,18 @@
+{% extends 'registration.html'%}
+
+{% block nosaukums %} Statistics {% endblock %}
+
+{% block saturs %}
+  <table class="table">
+      <tr>
+        <th>User</th>
+        <th>Message count</th>
+      </tr>
+        {% for one in user %}    
+          <tr>
+            <td>{{one[0]}} {{one[1]}}</td>
+            <td>{{one[2]}}</td>
+          </tr>
+        {% endfor %}
+  </table>
+{% endblock %}

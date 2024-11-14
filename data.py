@@ -48,26 +48,46 @@ def add_message(text, user_id):
     cur.execute(
         f"""
         INSERT INTO message(text, user_id) VALUES("{text}","{user_id}")
+
         """
     )
     conn.commit()
 
-def get_user():
+
+def get_message_message():
     cur = conn.cursor()
     cur.execute(
         f"""
-        SELECT id, name, lastname, username FROM user
+        SELECT user.name, user.lastname, message.text
+        FROM
+        message JOIN user ON message.user_id = user.id
+        ORDER BY message.id DESC
         """
     )
     conn.commit()
     data = cur.fetchall()
     return data
 
-def get_message():
+def get_user_message():
     cur = conn.cursor()
     cur.execute(
         f"""
-        SELECT id, text, user_id FROM message
+        SELECT id, username FROM user
+        ORDER BY username ASC
+        """
+    )
+    conn.commit()
+    data = cur.fetchall()
+    return data
+
+def get_statistics():
+    cur = conn.cursor()
+    cur.execute(
+        f"""
+        SELECT user.name, user.lastname, COUNT(message.user_id)
+        FROM
+        message JOIN user ON message.user_id = user.id
+        GROUP BY user.id
         """
     )
     conn.commit()

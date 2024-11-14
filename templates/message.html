@@ -5,27 +5,25 @@
 {% block saturs %}
 <form method="post">
   <select id="user_id" name="user_id">
+    <option value="" selected></option>
     {% for one in user %}
-      <option value="{{one[0]}}">{{one[3]}}</option>
+      <option value="{{one[0]}}">{{one[1]}}</option>
     {% endfor %}    
   </select>
-  <textarea id="text" name="text" rows="4" cols="50">
-    Write text here
-  </textarea>
+  <textarea id="text" name="text" rows="4" cols="50" placeholder="Write text here"></textarea>
   <input type="submit" value="Add message">
+  <h3>{{error}}</h3>
   <table class="table">
       <tr>
         <th>User</th>
         <th>Message</th>
       </tr>
-      {% for one in user %}
-        {% for two in message %}    
+        {% for one in message %}    
           <tr>
-            <td>{{one[1]}} {{one[2]}}</td>
-            <td>{{two[1]}}</td>
+            <td>{{one[0]}} {{one[1]}}</td>
+            <td>{{one[2]}}</td>
           </tr>
         {% endfor %}
-      {% endfor %}
   </table>
 </form>    
 {% endblock %}

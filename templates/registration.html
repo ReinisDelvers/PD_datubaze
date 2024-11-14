@@ -12,12 +12,13 @@
         <hr>
 
         {% block saturs %}
-        <form method="post">
-            <input type="text" id="name" name="name" placeholder="Name">
-            <input type="text" id="lastname" name="lastname" placeholder="Last name">
-            <input type="text" id="username" name="username" placeholder="Username">
-            <input type="submit" value="Register">
-        </form>
+            <form method="post">
+                <input type="text" id="name" name="name" placeholder="Name">
+                <input type="text" id="lastname" name="lastname" placeholder="Last name">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <input type="submit" value="Register">
+            </form>
+            <h3>{{error}}</h3>
         {% endblock %}
     </body>
 </html>
